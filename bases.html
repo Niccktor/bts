@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Nicktor">
+
+  <title>Apprendre le C ! - Nicktor</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Thomas Beguin</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="prerequis.html">Prerequis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bases.html">Les bases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cv.html">CV</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="projet.html">Projets</a>
+          </li>    
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/c.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Apprendre le C !</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 mx-auto">
+         <h3>Votre premier programme</h3>
+            <p>
+              Il faut savoir qu'en fait il existe deux types de programmes, pas plus :
+            </p>
+			<li>
+                les programmes avec fenêtres ;
+            </li>
+            <li>
+                les programmes en console.
+            </li>
+			<br>
+			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  				<div class="carousel-inner">
+    				<div class="carousel-item active">
+      					<img class="d-block w-100" src="img/spotify.png" alt="First slide">
+    				</div>
+    				<div class="carousel-item">
+      					<img class="d-block w-100" src="img/steam.png" alt="Second slide">
+    				</div>
+	  				<div class="carousel-item">
+     	 				<img class="d-block w-100" src="img/console.png" alt="Third slide">
+	  				</div>
+					</div>
+					<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+	  				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    				<span class="sr-only">Previous</span>
+  					</a>
+  					<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+	  				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+	  				<span class="sr-only">Next</span>
+				</a>
+			</div>
+            <p>
+                Passon aux chose serieuse.
+            </p>
+			<h3>
+				Ft_putchar
+			</h3>
+            <p>
+                Pour ce premmier programme nous devons refactoriser la fonction putcha() de la libc.
+            </p>
+			<p>
+				Mais comment savoir que fait putchar()? Il suffit de demander à votre terminal. man putchar. Voilà ce que va vous répondre votre terminal:
+			</p>
+			<pre>
+PUTS(3)                                       Linux Programmer's Manual                                       PUTS(3)
+
+NAME
+       fputc, fputs, putc, putchar, puts - output of characters and strings
+
+SYNOPSIS
+       #include &lt;stdio.h&gt;
+
+       int fputc(int c, FILE *stream);
+
+       int fputs(const char *s, FILE *stream);
+
+       int putc(int c, FILE *stream);
+
+       int putchar(int c);
+
+       int puts(const char *s);
+
+DESCRIPTION
+       fputc() writes the character c, cast to an unsigned char, to stream.
+
+       fputs() writes the string s to stream, without its terminating null byte ('\0').
+
+       putc()  is equivalent to fputc() except that it may be implemented as a macro which evaluates stream more than
+       once.
+
+       putchar(c) is equivalent to putc(c, stdout).
+
+       puts() writes the string s and a trailing newline to stdout.
+
+       Calls to the functions described here can be mixed with each other and with calls to  other  output  functions
+       from the stdio library for the same output stream.
+
+       For nonlocking counterparts, see unlocked_stdio(3).
+
+RETURN VALUE
+       fputc(), putc() and putchar() return the character written as an unsigned char cast to an int or EOF on error.
+
+       puts() and fputs() return a nonnegative number on success, or EOF on error.
+
+ATTRIBUTES
+       For an explanation of the terms used in this section, see attributes(7).
+
+       ┌──────────────────────────┬───────────────┬─────────┐
+       │Interface                 │ Attribute     │ Value   │
+       ├──────────────────────────┼───────────────┼─────────┤
+       │fputc(), fputs(), putc(), │ Thread safety │ MT-Safe │
+       │putchar(), puts()         │               │         │
+       └──────────────────────────┴───────────────┴─────────┘
+CONFORMING TO
+       POSIX.1-2001, POSIX.1-2008, C89, C99.
+
+BUGS
+       It is not advisable to mix calls to output functions from the stdio library with low-level calls  to  write(2)
+       for  the file descriptor associated with the same output stream; the results will be undefined and very proba‐
+       bly not what you want.
+
+SEE ALSO
+       write(2), ferror(3), fgets(3), fopen(3), fputwc(3), fputws(3),  fseek(3),  fwrite(3),  putwchar(3),  scanf(3),
+       unlocked_stdio(3)
+
+COLOPHON
+       This  page  is part of release 4.15 of the Linux man-pages project.  A description of the project, information
+       about   reporting   bugs,   and    the    latest    version    of    this    page,    can    be    found    at
+       https://www.kernel.org/doc/man-pages/.
+
+GNU                                                   2015-08-08                                              PUTS(3)
+			</pre>
+			<p>
+				Nous pouvons voir que putchar() et une fonction qui prend une variable du type int le transforme dans le type unsigned char et l'affiche, puis la fonction nous renvoie un chiffre positif en cas de réussite et un chiffre négatif en cas d'échec.
+			</p>
+			<p>
+				Nous pouvons tester la fonction par nous-mêmes. il suffit de crée un fichier C. Pour cela vim nom_du_fichier.c, écrire:
+			</p>
+			<pre>
+  #include &lt;stdio.h&gt;
+  
+  int	main(void)
+  {
+  	putchar(54);
+  	return (0);
+  }
+			</pre>
+			<p>
+				Il ne reste plus qu'a compiler ce fichier. Pour cela gcc nom_du_fichier.c (Si vous voulez en apprendre plus sur gcc: man gcc)
+			</p>
+			<p>
+				Avec la commande ls (man ls) vous pouvez remarquer qu'un fichier a.out et apparus. C'est l'executable de notre magnifique programme. Il vous suffit de faire : ./a.out 
+			</p>
+			<p>
+				Notre programme nous affiche donc le caractère 5 mais pourquoi 5 et pas 53 c'est tout simple la fonction putchar() prend une variable du type INT donc un entier positif ou négatif et le transforme en usigned char c’est-à-dire un caractère de la table ASCII (man ascii) donc 5 dans notre cas.
+			</p>
+			<p>
+				Pour realiser notre propre putchar nous allons la prototyper comme la vrai c'est a dire:
+			</p>
+			<pre>
+int		ft_printf(int c);	//Cela est le prototypage de notre fonction
+
+int		ft_printf(int c)	//Cela est la déclaration de notre fonction
+{
+	return (0);			//Ici c'est ce que va faire la fonction.
+}
+			</pre>
+			<p>
+				Pour réaliser notre fonction nous aurons besoin d'une autre fonction de la libc appeler write() (man write). Nous devrrons inclure la lib unistd.h pour utiliser write().
+			</p>
+						<pre>
+#include &lt;unistd.h&gt;			//Inclusion de la lib unistd.h
+
+int		ft_putchar(int c);	//Prototypage de notre fonction
+
+int		ft_putchar(int c)	//Déclaration de notre fonction
+{
+	int		d;		//Declaration de notre varriable de retour.
+	d = write(1, &c, 1);		//Appel de la fonction write pour écrire sur la sortie standard.
+					//d prend la valeur du retour de la fonction de write().
+	return(d);			//Retour de notre varriable
+}
+
+int		main(void)
+{
+	ft_putchar(53);			//Test de notre nouvelle fonction
+	putchar(53);			//Fonction de la libc
+	return (0);
+}
+
+			</pre>
+			<p>
+				Nous pouvons maintenant tester notre programme. Il suffit de le compiler et l'exécuter gcc nom_du_fichier.c ./a.out notre programme affiche sur la sortie standard "55".
+			</p>
+			<h3>
+				Maintenant c'est à vous de jouer.
+			</h3>
+			 <hr>
+			<p>
+				Realiser la fonction ft_print_alphabet. 
+			</p>
+			<li>
+				Écrire une fonction qui affiche l’alphabet en minuscule sur une seule ligne, dans l’ordre croissant, à partir de la lettre ’a’.
+			</li>
+			<li>
+				Elle devra être prototypée de la façon suivante : void	ft_print_alphabet(void);
+			</li>
+			<li>
+				Fonctions Autorisées : write
+			</li>
+			<hr>
+			<p>
+				Realiser la fonction ft_print_reverse_alphabet. 
+			</p>
+			<li>
+				Écrire une fonction qui affiche l’alphabet en minuscule sur une seule ligne, dans
+l’ordre décroissant, à partir de la lettre ’z’.
+			</li>
+			<li>
+				Elle devra être prototypée de la façon suivante : void ft_print_reverse_alphabet(void);
+			</li>
+			<li>
+				Fonctions Autorisées : write
+			</li>
+						<hr>
+			<p>
+				Realiser la fonction ft_is_negative. 
+			</p>
+			<li>
+				Écrire une fonction qui affiche ’N’ ou ’P’ suivant le signe de l’entier passé en
+paramètre. Si n est négatif alors afficher ’N’. Si n est positif ou nul alors afficher
+’P’.
+			</li>
+			<li>
+				Elle devra être prototypée de la façon suivante : void ft_is_negative(int n);
+			</li>
+			<li>
+				Fonctions Autorisées : write
+			</li>
+			<hr>
+			<p>
+				Realiser la fonction ft_print_comb. 
+			</p>
+			<li>
+				Écrire une fonction qui affiche, dans l’ordre croissant, toutes les différentes combinaisons
+de trois chiffres différents dans l’ordre croissant - oui, la répétition est
+volontaire.
+			</li>
+			<li>Cela donne:
+				<pre>
+./a.out | cat -e
+012, 013, 014, 015, 016, 017, 018, 019, 023, ..., 789$
+				</pre>
+			</li>
+			<li>
+				987 n’est pas là car 789 est déjà présent
+			</li>
+			<li>
+				999 n’est pas là car ce nombre ne comporte pas exclusivement des chiffres différents
+les uns des autres
+			</li>
+			<li>
+				Elle devra être prototypée de la façon suivante : void ft_print_comb(void);
+			</li>
+			<li>
+				Fonctions Autorisées : write
+			</li>
+			<hr>
+			<p>
+				Realiser la fonction ft_print_comb2. 
+			</p>
+			<li>
+				Écrire une fonction qui affiche toutes les différentes combinaisons de deux nombres
+entre 0 et 99, dans l’ordre croissant.
+			</li>
+			<li>Cela donne:
+				<pre>
+$>./a.out | cat -e
+00 01, 00 02, 00 03, 00 04, 00 05, ..., 00 99, 01 02, ..., 97 99, 98 99$
+				</pre>
+			</li>
+			<li>
+				Elle devra être prototypée de la façon suivante : void ft_print_comb2(void);
+			</li>
+			<li>
+				Fonctions Autorisées : write
+			</li>
+			<hr>
+			<p>
+				Realiser la fonction ft_putnbr. 
+			</p>
+			<li>
+				Écrire une fonction qui affiche un nombre passé en paramètre. La fonction devra
+être capable d’afficher la totalité des valeurs possibles dans une variable de type
+int.
+			</li>
+			<li>
+				Elle devra être prototypée de la façon suivante : void ft_putnbr(int nb);
+			</li>
+			<li>
+				Fonctions Autorisées : write
+			</li>
+			<li>
+				par exemple : ft_putnbr(42) affiche "42".
+			</li>
+			<hr>
+			<p>
+				Realiser la fonction ft_print_combn. 
+			</p>
+			<li>
+				Écrire une fonction qui affiche toutes les différentes combinaisons de n chiffres dans
+l’ordre croissant.
+			</li>
+			<li>
+				n sera tel que : 0 &lt; n &lt; 10
+			</li>
+			<li>Si n = 2, cela donne quelque chose comme ça :
+				<pre>$>./a.out | cat -e
+01, 02, 03, ..., 09, 12, ..., 79, 89$>
+				</pre>
+			</li>
+			<li>
+				Elle devra être prototypée de la façon suivante : void ft_print_combn(int n);
+			</li>
+			<li>
+				Fonctions Autorisées : write
+			</li>
+			
+		  </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://github.com/Niccktor">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Nicktor 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
+
